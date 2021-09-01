@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
+use App\Http\Controllers\News\NewsController as DefaultNewsController;
+use App\Http\Controllers\Category\CategoryController as DefaultCategoryController;
+ /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -16,12 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/hello_world_page', function () {
-    return 'hello world page';
+
+Route::group(['prefix' => 'default'], function() {
+   Route::resource('news', DefaultNewsController::class);
 });
-Route::get('/another_page', function () {
-    return 'another_page';
+Route::group(['prefix' => 'default'], function() {
+    Route::resource('category', DefaultCategoryController::class);
 });
-Route::get('/I_know_how_use_blades', function () {
-    return 'ohhh yeaaa';
-});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
