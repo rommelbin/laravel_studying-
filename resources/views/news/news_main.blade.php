@@ -11,4 +11,6 @@
         <br>
         <hr>
     @endforeach
+
+    <a href="{{route('news.create')}}"><b>Create</b></a>
 @endsection

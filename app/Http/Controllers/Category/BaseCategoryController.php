@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\Controller;
 use Faker\Factory;
-use Illuminate\Http\Request;
 
 abstract class BaseCategoryController extends Controller
 {

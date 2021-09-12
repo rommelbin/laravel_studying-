@@ -4,9 +4,8 @@ namespace App\Http\Controllers\News;
 
 use App\Http\Controllers\Controller;
 use Faker\Factory;
-use Illuminate\Http\Request;
 
-class BaseNewsController extends Controller
+abstract class BaseNewsController extends Controller
 {
     // some future features
     public function getNews() {

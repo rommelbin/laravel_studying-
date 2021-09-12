@@ -23,8 +23,9 @@ class NewsController extends BaseNewsController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        return view('news.new_news');
     }
 
     /**
@@ -35,7 +36,7 @@ class NewsController extends BaseNewsController
      */
     public function store(Request $request)
     {
-        //
+           dd($request->input());   
     }
 
     /**
