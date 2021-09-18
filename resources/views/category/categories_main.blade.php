@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     @foreach($categories as $category)
-    Имя категории: {{$category['name']}}
+    Имя категории: {{$category['title']}}
     <br>
     Айди категории: {{$category['id']}}
     <br>

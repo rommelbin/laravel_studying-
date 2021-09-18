@@ -1,5 +1,13 @@
 @extends('layouts.app')
 @section('content')
-    новость, которая заново генерируется и не может оставаться одинаковой.
-    айди новости - {{$id}}
+    TITLE::{{$news['author']}}
+    <hr>
+    <hr>
+    ID ::{{$news['id']}}
+    <hr>
+    <hr>
+    AUTHOR::{{$news['author']}}
+    <hr>
+    <hr>
+    DESCRIPTION:: {{$news['description']}}
 @endsection

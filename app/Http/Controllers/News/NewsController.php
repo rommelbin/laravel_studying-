@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\News;
 
 use App\Http\Controllers\Controller;
+use App\Models\news;
 use Illuminate\Http\Request;
 
 class NewsController extends BaseNewsController
@@ -14,7 +15,7 @@ class NewsController extends BaseNewsController
      */
     public function index()
     {
-        $news = $this->getNews();
+        $news = news::all();
         return view('news.news_main', ['news' => $news]);
     }
 
@@ -25,7 +26,7 @@ class NewsController extends BaseNewsController
      */
     public function create(Request $request)
     {
-        return view('news.new_news');
+        return view('news.new_news', ['one_news' => $news]);
     }
 
     /**
@@ -47,7 +48,8 @@ class NewsController extends BaseNewsController
      */
     public function show($id)
     {
-        return view('news.one_new', ['id' => $id]);
+        $news = news::findOrFail($id);
+        return view('news.one_new', ['news' => $news]);
     }
 
     /**

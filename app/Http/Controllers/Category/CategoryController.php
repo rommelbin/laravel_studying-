@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Category;
 
+use App\Models\category;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class CategoryController extends BaseCategoryController
      */
     public function index()
     {
-        $categories = $this->getCategories();
+        $categories = category::all();
         return view('category.categories_main', ['categories' => $categories]);
     }
 
@@ -47,7 +48,8 @@ class CategoryController extends BaseCategoryController
      */
     public function show($id)
     {
-        return view('category.one_category', ['id' => $id]);
+        $category = category::findOrFail($id);
+        return view('category.one_category', ['category' => $category]);
     }
 
     /**
