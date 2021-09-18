@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\Category;
 
-use App\Models\category;
+use App\Models\Category;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
-
+use App\Http\Repositories\Category\СategoryRepository;
 class CategoryController extends BaseCategoryController
 {
+    protected $categoryRepository; 
+    public function __construct() {
+        parent::__construct();
+        $this->categoryRepository = app(СategoryRepository::class);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,7 @@ class CategoryController extends BaseCategoryController
      */
     public function index()
     {
-        $categories = category::all();
+        $categories = $this->categoryRepository->getAll();
         return view('category.categories_main', ['categories' => $categories]);
     }
 

@@ -2,20 +2,25 @@
 
 namespace App\Http\Controllers\News;
 
-use App\Http\Controllers\Controller;
-use App\Models\news;
 use Illuminate\Http\Request;
-
+use App\Http\Repositories\News\NewsRepository;
 class NewsController extends BaseNewsController
 {
     /**
      * Display a listing of the resource.
-     *
+     * @var \App\Http\Repositories\News\NewsRepository $newsRepository
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
+    
+    protected $newsRepository;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->newsRepository = app(NewsRepository::class);
+    }
     public function index()
     {
-        $news = news::all();
+        $news = $this->newsRepository->getAll();
         return view('news.news_main', ['news' => $news]);
     }
 
@@ -26,7 +31,7 @@ class NewsController extends BaseNewsController
      */
     public function create(Request $request)
     {
-        return view('news.new_news', ['one_news' => $news]);
+        return view('news.new_news');
     }
 
     /**
@@ -35,9 +40,12 @@ class NewsController extends BaseNewsController
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
-    {
-           dd($request->input());   
+    {   
+        $data = $request->input();
+        $this->newsRepository->saveData($data);
+        return redirect('default/news', 302);
     }
 
     /**
@@ -48,7 +56,7 @@ class NewsController extends BaseNewsController
      */
     public function show($id)
     {
-        $news = news::findOrFail($id);
+        $news = $this->newsRepository->getOneById($id);
         return view('news.one_new', ['news' => $news]);
     }
 

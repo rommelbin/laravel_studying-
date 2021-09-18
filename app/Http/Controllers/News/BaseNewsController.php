@@ -7,5 +7,8 @@ use Faker\Factory;
 
 abstract class BaseNewsController extends Controller
 {
-    // some future features
+    public function __construct ()
+    {
+
+    }
 }

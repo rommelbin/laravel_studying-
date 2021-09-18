@@ -3,9 +3,11 @@
 <form action="{{route('news.store')}}" method="POST">
     @csrf
     @method('POST')
-    <input type="text" name='name' placeholder="Please, write your name">
-    <input type="text" name='old' placeholder="Please, write your age">
-    <input type="text" name="mother_town" placeholder="Please, write your town">
+    <input type="text" name='title' placeholder="Please, the title of an article">
+    <input type="text" name='slug' placeholder="Please, the slug of an article">
+    <input type="text" name='description' placeholder="Please, the description of an article">
+    <input type="text" name='author' placeholder="Please, the author of an article">
+    <input type="text" name='category_id' placeholder="Please, the category of an article">
     <input type="submit" value="Send">
 </form>
 @endsection

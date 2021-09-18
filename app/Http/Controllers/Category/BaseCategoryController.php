@@ -7,4 +7,8 @@ use Faker\Factory;
 
 abstract class BaseCategoryController extends Controller
 {
+    public function __construct()
+    {
+        
+    }
 }

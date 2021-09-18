@@ -5,16 +5,16 @@ namespace Database\Factories;
 use App\Models\news;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str as SupportStr;
-use Str;
 
-class newsFactory extends Factory
+
+class NewsFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = news::class;
+    protected $model = News::class;
 
     /**
      * Define the model's default state.

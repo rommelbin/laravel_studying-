@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\category;
-use App\Models\news;
+use App\Models\Category;
+use App\Models\News;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        category::factory(10)->create();
-        news::factory(10)->create();
+        Category::factory(10)->create();
+        News::factory(10)->create();
     }
 }
