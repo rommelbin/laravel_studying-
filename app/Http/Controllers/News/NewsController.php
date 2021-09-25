@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\News;
 
+use App\Http\Requests\NewsControllerStoreRequest as StoreRequest;
 use Illuminate\Http\Request;
 use App\Http\Repositories\News\NewsRepository;
 class NewsController extends BaseNewsController
@@ -41,10 +42,11 @@ class NewsController extends BaseNewsController
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {   
-        $data = $request->input();
-        $this->newsRepository->saveData($data);
+        $validated = $request->validated();
+        dd($validated);
+        $this->newsRepository->saveData($validated);
         return redirect('default/news', 302);
     }
 
