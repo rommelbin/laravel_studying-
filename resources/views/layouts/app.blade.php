@@ -74,17 +74,10 @@
                 </div>
             </div>
         </nav>
-        <div class="menu">
-            Меню
-        </div>
-        <br>
-        <hr>
+
         <main class="py-4">
             @yield('content')
         </main>
-        <footer style="margin-top:500px">
-            Футер
-        </footer>
     </div>
 </body>
 </html>
