@@ -1,5 +1,5 @@
 <?php
-
+use \App\Http\Controllers\SocialLoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\News\NewsController as DefaultNewsController;
 use App\Http\Controllers\Category\CategoryController as DefaultCategoryController;
@@ -32,3 +32,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'guest'], function() {
+    Route::get('/vk/start', [SocialLoginController::class, 'start'])
+        ->name('vk.start');
+    Route::get('/vk/callback', [SocialLoginController::class, 'callback'])
+        ->name('vk.callback');
+    Route::get('/fb/start', [SocialLoginController::class, 'start'])
+        ->name('fb.start');
+    Route::get('/fb/callback', [SocialLoginController::class, 'callback'])
+        ->name('fb.callback');
+});
+Route::get('/parser', [\App\Http\Controllers\Admin\ParserController::class, 'index']);
